@@ -1,1 +1,44 @@
-step_by_step
+Create a new rails app:
+	skipping test unit and using Postgress DB in the installation:
+	rails new fit_right --skip-test-unit -d postgresql
+	should see rails create a bunch of files & directories for you and then bundle install for you too. 
+
+Start repo:
+	Initialize a repository on your machine:  
+		git init
+		git add .
+		git commit -m "first commit"
+	Create a remote repo on github and sync them:
+		Go create the repo on github
+		git remote add origin https://github.com/kennytrionfo/taste_buds.git
+		git push -u origin master
+
+Start documentation: 
+	Open app in text editor, 
+	Edit readme file if u like, 
+	Start step by step instructions file if you like. 
+
+System check: 
+	Check ur Rubies, versions and gems etc. i.e. rvm, ruby, rails, bundle, gems etc. 
+	rvm list
+	rvm gemset
+	ruby -v
+	rails -v
+
+Install gems: 
+	In Gemfile:
+	Better Errors, factory girl, sprockets? 
+	Minitest: 
+	group :test, :development do
+  	gem "minitest-rails"
+	end
+	Check for the minitest generator in console with: 
+	rails generate
+	Install the gem with this from the console:
+	rails g minitest:install
+	Should see a test folder now in ur app in text editor. 
+
+** PUt TESTING IN HERE ALONG THE WAY ON 2ND RUN OF BUILDING THIS APP
+
+** ALSO BUILD INTO THIS DOING IT IN MOBILE 2ND TIME AROUND. 
+
