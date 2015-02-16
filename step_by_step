@@ -42,3 +42,30 @@ Install gems:
 
 ** ALSO BUILD INTO THIS DOING IT IN MOBILE 2ND TIME AROUND. 
 
+** ALSO DO THIS WITHOUT USING SCAFFOLDS NEXT TIME TOO. 
+
+Create the ability to add shops model with it's attributes:
+	rails g scaffold Shop title:string description:text flavor:string address:string rating:string
+	rake db:migrate
+	localhost:3000
+	to test it in browser
+
+Add the ability to add users: 
+	Install and set up devise gem
+	bundle install
+	Following instructions on devise homepage and in console: 
+	rails generate devise:install
+	In config/development: 
+	config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+    In config routes: 
+    root 'shops#index'
+    Add code to allow flash messages in application.html.erb:
+    (not copying the instructions in the console here but putting code that works with bootstrap), above <%= yield %>:
+    <% flash.each do |name, msg| %>
+		<%= content_tag(:div, msg, class: "alert alert-info") %>
+	<% end %>
+	rails g devise:views
+	
+
+
+	
