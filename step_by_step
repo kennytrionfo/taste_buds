@@ -65,7 +65,30 @@ Add the ability to add users:
 		<%= content_tag(:div, msg, class: "alert alert-info") %>
 	<% end %>
 	rails g devise:views
+	Generate a devise model by: 
+	rails g devise User
+	rake db:migrate
+	Stop and restart server in the console with:
+	control c, then: 
+	rails s
+	Test in browser with: 
+	localhost:3000/users/sign_in
+
+Connect any new shops with a user: 
+	rails g migration add_user_id_to_shops user_id:integer	
+	Make this change in our models/tables active in the db:
+	rake db:migrate
+
+Make it so when a new shop is created it's done from the current user: 
 	
+
+
+
+
+
+
+
+
 
 
 	
