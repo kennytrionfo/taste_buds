@@ -79,8 +79,20 @@ Connect any new shops with a user:
 	Make this change in our models/tables active in the db:
 	rake db:migrate
 
+Connect the User model and Shop models with associations: 
+	In models/shop.rb
+	belongs_to :user
+	In models/user.rb
+
 Make it so when a new shop is created it's done from the current user: 
-	
+	In ShopsController, in new action, make @shop = 
+	current_user.movies.build
+	And also put this in the create action before (shop_params)
+	Also authenticate users. 
+	At top: 
+	before_action :authenticate_user!, except: [:index, :show]
+	(This is from devise, makes it so that a user that isn't signed in will be directed to the signup page if they try and create a new shop.)
+
 
 
 
