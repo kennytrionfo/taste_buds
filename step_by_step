@@ -28,6 +28,13 @@ System check:
 Install gems: 
 	In Gemfile:
 	Better Errors, factory girl, sprockets? 
+
+	Better Errors Gem:
+	group :development, :test do
+		gem 'binding_of_caller', '~> 0.7.2'
+		gem 'better_errors', '~> 2.0.0'
+	end
+
 	Minitest: 
 	group :test, :development do
   	gem "minitest-rails"
@@ -37,6 +44,10 @@ Install gems:
 	Install the gem with this from the console:
 	rails g minitest:install
 	Should see a test folder now in ur app in text editor. 
+
+	gem 'minitest-focus' #allows you to focus on just one test by putting 'focus' before test
+	gem 'minitest-reporters'  #give you prettier output 
+	The above two must be required in ur test_helper.rb file. 
 
 ** PUt TESTING IN HERE ALONG THE WAY ON 2ND RUN OF BUILDING THIS APP
 
@@ -92,6 +103,34 @@ Make it so when a new shop is created it's done from the current user:
 	At top: 
 	before_action :authenticate_user!, except: [:index, :show]
 	(This is from devise, makes it so that a user that isn't signed in will be directed to the signup page if they try and create a new shop.)
+
+Add the ability to upload an image for each shop: 
+	Put paperclip gem in Gemfile:
+	gem 'paperclip', '~> 4.2.1'
+	bundle install
+	restart server with: 
+	controll c and then rails s
+	Read instructions in paperclip github homepage and under put instructions under rails 4 into shop.rb model but with a few syntax and other changes like so: 
+	has_attached_file :image, :styles: { medium: "400x600#", }
+  	validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+  	Following github directions still, do a migration: 
+  	rails g paperclip shop image
+  	rake db:migrate
+  	Next edit forms and display it inside of view. Following instructions under "Edit and New Viewe". In views/shops/_form.html.erb: 
+  	Add
+  	:html => { :multipart => true }
+  	to form_for line (as well as hash syntax) so it'll look like: 
+	<%= form_for @shop, html: { multipart: true } do |f| %>
+  	Add a file field to the form so we can upload a file: 
+  	Under the rating field: 
+	  </div>
+	    <div class="field">
+	    <%= f.label :image %><br>
+	    <%= f.file_field :image %>
+	  </div>
+
+
+
 
 
 
