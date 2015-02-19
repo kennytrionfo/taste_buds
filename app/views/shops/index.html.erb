@@ -15,6 +15,7 @@
   <tbody>
     <% @shops.each do |shop| %>
       <tr>
+        <td><%= image_tag shop.image.url(:medium) %></td>
         <td><%= shop.title %></td>
         <td><%= shop.description %></td>
         <td><%= shop.flavor %></td>

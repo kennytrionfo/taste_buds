@@ -128,6 +128,31 @@ Add the ability to upload an image for each shop:
 	    <%= f.label :image %><br>
 	    <%= f.file_field :image %>
 	  </div>
+	Try in browser. should get no errors but no pic should show up either. 
+
+Make it so the image shows up on the show page. 
+	Delete this at the top (this is the extra "A new shop was successfully created" flash alert): 
+	<p id="notice"><%= notice %></p>
+	Add an image tag at the top: 
+	<%= image_tag @shop.image.url(:medium) %>
+
+Add the image to the permited attributes in the shops controller: 
+	Add image to the list of permitted params in the private shop_params method. should look like: 
+	      params.require(:shop).permit(:title, :description, :flavor, :address, :rating, :image)
+	Create a new shop and see if it works. 
+	If you get a message like this: 1 error prohibited this movie from being saved: Image Could not run the `identify` command. Please install ImageMagick.﻿, then you have to install it on your machine. Follow these links: 
+	http://cactuslab.com/imagemagick/
+	https://www.youtube.com/watch?v=Z5W-Y3aROVE
+
+Display the shop images on the index page: 
+	In index.html.erb, add another row to the shops table with: 
+	    <td><%= image_tag shop.image.url(:medium) %></td>
+	Refresh to see if it shows. 
+	Update the rest with pics if you want. 
+
+
+
+
 
 
 
