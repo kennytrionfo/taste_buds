@@ -60,6 +60,7 @@ Create the ability to add shops model with it's attributes:
 	rake db:migrate
 	localhost:3000
 	to test it in browser
+	commit
 
 Add the ability to add users: 
 	Install and set up devise gem
@@ -84,16 +85,19 @@ Add the ability to add users:
 	rails s
 	Test in browser with: 
 	localhost:3000/users/sign_in
+	commit
 
 Connect any new shops with a user: 
 	rails g migration add_user_id_to_shops user_id:integer	
 	Make this change in our models/tables active in the db:
 	rake db:migrate
+	commit
 
 Connect the User model and Shop models with associations: 
 	In models/shop.rb
 	belongs_to :user
 	In models/user.rb
+	commit
 
 Make it so when a new shop is created it's done from the current user: 
 	In ShopsController, in new action, make @shop = 
@@ -129,6 +133,7 @@ Add the ability to upload an image for each shop:
 	    <%= f.file_field :image %>
 	  </div>
 	Try in browser. should get no errors but no pic should show up either. 
+	commit
 
 Make it so the image shows up on the show page. 
 	Delete this at the top (this is the extra "A new shop was successfully created" flash alert): 
@@ -150,6 +155,13 @@ Display the shop images on the index page:
 	Refresh to see if it shows. 
 	Update the rest with pics if you want. 
 
+If you don't want to have git recognize the directory where the pictures are at, add it to the ignore .gitignore file. 
+	Add: 
+	/public/systems/movies/images
+
+Start styling. Add bootstrap gem: 
+	
+Where's the "left off xxx here in vid" ? ? ? 
 
 
 
